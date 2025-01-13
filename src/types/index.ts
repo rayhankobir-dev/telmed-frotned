@@ -1,5 +1,5 @@
 export interface Medicine {
-  _id?: string;
+  _id: string;
   slug: string;
   name: string;
   strength: string;

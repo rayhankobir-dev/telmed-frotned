@@ -23,7 +23,7 @@ function MedicineCard({ medicine }: { medicine: Medicine }) {
         href={`/medicines/${medicine._id}`}
         className="max-h-[180px] overflow-hidden"
       >
-        <img
+        <Image
           className="w-full max-w-[200px] mx-auto aspect-square object-cover object-center scale-110 hover:scale-125 transition-all duration-300"
           src={medicine.image}
           alt={medicine.name}
@@ -62,7 +62,7 @@ function MedicineCard({ medicine }: { medicine: Medicine }) {
 
           <button
             onClick={() =>
-              addToCart({ id: medicine.name, medicine, quantity: 1 })
+              addToCart({ id: medicine._id, medicine, quantity: 1 })
             }
             className="h-10 w-fit flex items-center gap-1.5 px-3 bg-primary/10 hover:bg-primary/90 border border-primary/50 font-medium text-primary hover:text-white rounded-md duration-300"
           >

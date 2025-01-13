@@ -1,17 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import { Minus, Plus, ShoppingBag } from "lucide-react";
-import MedicineCard from "./medicine-card";
+"use client";
 import { Medicine } from "@/types";
+import MedicineCard from "./medicine-card";
+import { useCartStore } from "@/store/cart";
+import { Minus, Plus, ShoppingBag } from "lucide-react";
 
 function MedicineDetails({ data }: any) {
   const { medicine, alternatives } = data;
+  const calculateDiscounedPrice = (price = 0, discountedPercentage = 0) => {
+    return price - (price * discountedPercentage) / 100;
+  };
+
+  const addToCart = useCartStore((state) => state.addToCart);
+  const cart = useCartStore((state) => state.cart);
+
   return (
     <>
       <section className="grid grid-cols-2 gap-6">
         <div className="bg-white border rounded-lg overflow-hidden">
           <img
+            className="w-full aspect-square object-cover object-center"
             src={medicine.image}
             alt={medicine.name}
             width={200}
@@ -39,7 +48,12 @@ function MedicineDetails({ data }: any) {
             <div className="font-medium">
               Discount Price:{" "}
               <span className="font-semibold">
-                ৳{medicine.price}/{medicine.unit}
+                ৳
+                {calculateDiscounedPrice(
+                  medicine.price,
+                  medicine.discountPercentage
+                ).toFixed(2)}
+                /{medicine.unit}
               </span>
             </div>
           </div>
@@ -49,14 +63,19 @@ function MedicineDetails({ data }: any) {
                 <Minus size={18} />
               </button>
               <p className="w-12 flex items-center justify-center font-medium">
-                1
+                {cart.find((item) => item.id === medicine._id)?.quantity || 0}
               </p>
               <button className="border-l h-10 w-10 flex items-center justify-center">
                 <Plus size={18} />
               </button>
             </div>
           </div>
-          <button className="mt-6 w-full flex items-center justify-center gap-2 px-14 py-2.5 text-white text-lg font-medium rounded-md transition bg-blue-600 hover:bg-blue-700">
+          <button
+            onClick={() =>
+              addToCart({ id: medicine._id, medicine, quantity: 1 })
+            }
+            className="mt-6 w-full flex items-center justify-center gap-2 px-14 py-2.5 text-white text-lg font-medium rounded-md transition bg-blue-600 hover:bg-blue-700"
+          >
             <ShoppingBag size={18} /> Add To Cart
           </button>
         </div>
