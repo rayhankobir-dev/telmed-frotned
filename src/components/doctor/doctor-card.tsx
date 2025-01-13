@@ -1,49 +1,49 @@
+"use client";
+import api from "@/api";
+import { useAuth } from "@/context/AuthContext";
+import { Doctor } from "@/types";
+import { redirect } from "next/navigation";
 import React from "react";
-
-interface Doctor {
-  id: number;
-  name: string;
-  specialty: string;
-  email: string;
-  phone: string;
-  location: string;
-  experience: number;
-  rating: number;
-  available: boolean;
-}
+import toast from "react-hot-toast";
 
 const DoctorCard: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
+  const { isAuthenticated, user } = useAuth();
+  const handleBooking = async () => {
+    if (!isAuthenticated) {
+      toast.error("Please login to book an appointment");
+      redirect("/login");
+    }
+
+    try {
+      const res = await api.post("/appointments/book", {
+        doctorId: doctor._id,
+        date: new Date(),
+        userId: user?._id,
+      });
+
+      const { url } = res.data;
+      window.location.href = url;
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+      toast.error("Failed to book appointment. Please try again.");
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg p-6 w-full max-w-sm border border-primary/20 hover:border-primary/50 shadow hover:shadow-lg duration-300">
-      <h2 className="text-xl font-semibold text-gray-800">{doctor.name}</h2>
-      <p className="text-sm text-gray-600">{doctor.specialty}</p>
-      <p className="text-sm text-gray-500">📍 {doctor.location}</p>
+      <h2 className="text-xl font-semibold text-gray-800">{doctor.fullName}</h2>
+      <p className="text-sm text-gray-600">{doctor.specialization}</p>
+      <p className="text-sm text-gray-500">📍 {doctor.degrees}</p>
 
       <div className="flex justify-between items-center mt-4">
         <span className="text-gray-700 text-sm">
-          🩺 {doctor.experience} yrs exp
+          🩺 {doctor.experienceInYears} yrs exp
         </span>
-        <span className="text-yellow-500 font-semibold">
-          ⭐ {doctor.rating}
-        </span>
-      </div>
-      <div
-        className={`mt-2 px-2 py-1 text-sm font-semibold rounded-md inline-block ${
-          doctor.available
-            ? "bg-green-100 text-green-600"
-            : "bg-red-100 text-red-600"
-        }`}
-      >
-        {doctor.available ? "Available" : "Unavailable"}
       </div>
 
       <button
-        className={`mt-4 w-full py-2 text-white font-semibold rounded-md transition ${
-          doctor.available
-            ? "bg-blue-600 hover:bg-blue-700"
-            : "bg-gray-400 cursor-not-allowed"
-        }`}
-        disabled={!doctor.available}
+        className="mt-4 w-full py-2 bg-primary text-white font-medium rounded-md transition"
+        onClick={handleBooking}
       >
         Book Appointment
       </button>

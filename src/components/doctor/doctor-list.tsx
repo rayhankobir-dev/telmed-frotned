@@ -7,10 +7,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import Image from "next/image";
 import DoctorCard from "./doctor-card";
-import doctors from "@/constants/doctors";
 
-function DoctorList() {
+function DoctorList({ doctors = [] }) {
   return (
     <section>
       <div className="flex justify-between items-center gap-2 px-1.5 py-1 pb-5">
@@ -30,6 +30,24 @@ function DoctorList() {
           </Select>
         </div>
       </div>
+
+      {doctors.length === 0 && (
+        <div className="flex flex-col justify-center items-center py-12 border border-dashed rounded-lg">
+          <Image
+            className="max-w-[200px]"
+            src="/images/empty-state.png"
+            alt="Empty State"
+            width={200}
+            height={200}
+          />
+          <h1 className="font-semibold text-2xl text-primary mt-5">
+            No Doctors Found
+          </h1>
+          <p className="max-w-sm text-center text-sm mt-2">
+            Please make sure your doctor name correctly and explore more doctors
+          </p>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 p-1">
         {doctors.map((doctor, index) => (

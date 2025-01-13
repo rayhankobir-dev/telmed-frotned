@@ -1,22 +1,55 @@
 export interface Medicine {
+  _id?: string;
+  slug: string;
   name: string;
   strength: string;
   dosageForm: string;
   generic: string;
   company: string;
-  mrp: number;
-  discount: number;
-  units: string;
+  price: number;
+  discountPercentage: number;
+  unit: string;
   image: string;
   description: string;
-  pharmachology: string;
-  dosageAndAdministration: string;
-  interaction: string;
+  indication: string;
   sideEffects: string;
-  overdose: string;
-  precautionsAndWarnings: string;
+  precautions: string;
   contraindications: string;
+  pharmachology: string;
+  storage: string;
+  dosage: string;
   pregnancy: string;
-  storageConditions: string;
   disclaimer: string;
+}
+
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  email: string;
+  role: "ADMIN" | "DOCTOR" | "USER";
+  mobile?: string;
+  image?: string;
+  dateOfBirth?: string;
+  age?: number;
+  gender?: string;
+  address?: string;
+  title?: string;
+  specialization?: string;
+  experienceInYears?: number;
+  education?: string;
+  degrees?: number;
+  charge?: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Doctor extends User {
+  title: string;
+  specialization: string;
+  experienceInYears: number;
+  education: string;
+  degrees: number;
+  charge: number;
 }

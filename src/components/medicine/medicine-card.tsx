@@ -6,22 +6,24 @@ import { ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/store/cart";
 
 function MedicineCard({ medicine }: { medicine: Medicine }) {
-  const discountedPrice = medicine.mrp - medicine.discount;
-  const discountedPercentage = (medicine.discount / medicine.mrp) * 100;
+  const calculateDiscounedPrice = (price = 0, discountedPercentage = 0) => {
+    return price - (price * discountedPercentage) / 100;
+  };
+
   const addToCart = useCartStore((state) => state.addToCart);
 
   return (
     <div className="relative flex flex-col justify-between border border-primary/20 hover:border-primary/50 shadow hover:shadow-lg rounded-2xl overflow-hidden cursor-pointer duration-300">
       <div className="absolute top-0 left-3 z-10 p-1 bg-primary font-semibold text-white text-[10px] rounded-b">
-        <span>{discountedPercentage.toFixed(0)}%</span>
+        <span>{medicine.discountPercentage.toFixed(0)}%</span>
         <p>OFF</p>
       </div>
 
       <Link
-        href={`/medicines/${medicine.name}`}
+        href={`/medicines/${medicine._id}`}
         className="max-h-[180px] overflow-hidden"
       >
-        <Image
+        <img
           className="w-full max-w-[200px] mx-auto aspect-square object-cover object-center scale-110 hover:scale-125 transition-all duration-300"
           src={medicine.image}
           alt={medicine.name}
@@ -33,7 +35,7 @@ function MedicineCard({ medicine }: { medicine: Medicine }) {
       <div className="flex-1 flex flex-col justify-between p-3">
         <div>
           <Link
-            href={`/medicines/${medicine.name}`}
+            href={`/medicines/${medicine._id}`}
             className="font-semibold text-sm hover:text-primary"
           >
             {medicine.name} ({medicine.dosageForm}){" "}
@@ -46,11 +48,15 @@ function MedicineCard({ medicine }: { medicine: Medicine }) {
         <div className="flex items-end justify-between mt-3">
           <div className="flex flex-col">
             <p className="inline-flex items-center font-light text-sm line-through">
-              ৳{medicine.mrp}
+              ৳{medicine.price}
             </p>
 
             <p className="inline-flex items-center font-semibold">
-              ৳{discountedPrice}
+              ৳
+              {calculateDiscounedPrice(
+                medicine.price,
+                medicine.discountPercentage
+              ).toFixed(2)}
             </p>
           </div>
 

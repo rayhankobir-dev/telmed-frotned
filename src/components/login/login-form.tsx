@@ -51,8 +51,8 @@ function LoginForm() {
             <div className="relative">
               <PhoneIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-primary" />
               <Input
-                id="mobile"
-                type="tel"
+                id="email"
+                type="email"
                 value={formik.values.mobile}
                 onChange={formik.handleChange}
                 className="pl-10 border-primary/40"

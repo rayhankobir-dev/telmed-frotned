@@ -6,10 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { medicines } from "@/constants/medicines";
+import Image from "next/image";
 import MedicineCard from "@/components/medicine/medicine-card";
 
-function MedicineList({ isTitleShow = true }) {
+function MedicineList({ isTitleShow = true, medicines = [] }) {
   return (
     <section>
       {isTitleShow && (
@@ -31,6 +31,25 @@ function MedicineList({ isTitleShow = true }) {
           </div>
         </div>
       )}
+      {medicines.length === 0 && (
+        <div className="flex flex-col justify-center items-center py-12 border border-dashed rounded-lg">
+          <Image
+            className="max-w-[200px]"
+            src="/images/empty-state.png"
+            alt="Empty State"
+            width={200}
+            height={200}
+          />
+          <h1 className="font-semibold text-2xl text-primary mt-5">
+            No Medicines Found
+          </h1>
+          <p className="max-w-sm text-center text-sm mt-2">
+            Please make sure your medicine name correctly and explore more
+            medicines
+          </p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 px-1">
         {medicines.map((medicine, index) => (
           <MedicineCard key={index} medicine={medicine} />

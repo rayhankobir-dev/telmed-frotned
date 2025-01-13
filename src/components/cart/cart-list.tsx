@@ -20,6 +20,13 @@ function CartList() {
 function CartItem({ item }: any) {
   const { removeFromCart, addToCart, decreaseQuantity } = useCartStore();
 
+  const priceCalculator = (item: any) => {
+    const price =
+      item.medicine.price -
+      (item.medicine.price * item.medicine.discountPercentage) / 100;
+    return price * item.quantity;
+  };
+
   return (
     <div className="flex items-center gap-3 group">
       <div className="relative w-16 h-16 flex items-center justify-center rounded-sm overflow-hidden bg-primary/10 border border-primary/10 group-hover:border-red-100">
@@ -54,8 +61,7 @@ function CartItem({ item }: any) {
 
       <div className="h-full flex flex-col justify-between items-end gap-2 pr-3">
         <div className="flex items-center gap-2">
-          <p>৳{item.medicine.mrp}</p>
-          <p className="line-through">৳{item.medicine.discount}</p>
+          <p>৳{priceCalculator(item).toFixed(2)}</p>
         </div>
 
         <div className="h-8 flex items-center gap-2 border rounded-sm overflow-hidden">

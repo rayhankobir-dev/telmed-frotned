@@ -2,12 +2,14 @@
 import React from "react";
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { redirect } from "next/navigation";
 
 function SearchInput() {
   const [keyword, setKeyword] = React.useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    redirect(`/medicines?keyword=${keyword}`);
   };
 
   return (

@@ -15,9 +15,63 @@ import { ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/store/cart";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { redirect } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import toast from "react-hot-toast";
+import api from "@/api";
 
 function CartBag() {
-  const { cart } = useCartStore();
+  const { cart, clearCart } = useCartStore();
+  const { isAuthenticated, user } = useAuth();
+
+  const calculateTotalPrice = () => {
+    return cart.reduce((total, item) => {
+      const price =
+        item.medicine.price -
+        (item.medicine.price * item.medicine.discountPercentage) / 100;
+      return total + price * item.quantity;
+    }, 0);
+  };
+
+  const calculateTotalDiscount = () => {
+    return cart.reduce((total, item) => {
+      const discount =
+        (item.medicine.price * item.medicine.discountPercentage) / 100;
+      return total + discount * item.quantity;
+    }, 0);
+  };
+
+  const placeOrder = async () => {
+    if (!isAuthenticated) {
+      toast.error("Please login to place order");
+      redirect("/login");
+    }
+
+    try {
+      const orderResponse = await api.post("/orders/create", {
+        userId: user._id,
+        medicines: cart,
+        totalPrice: calculateTotalPrice(),
+        totalDiscount: calculateTotalDiscount(),
+      });
+
+      if (orderResponse.data.order) {
+        const orderId = orderResponse.data.order._id;
+
+        const paymentResponse = await api.post("/orders/payment/initiate", {
+          orderId,
+        });
+
+        if (paymentResponse.data.url) {
+          clearCart();
+          window.location.href = paymentResponse.data.url;
+        }
+      }
+    } catch (error) {
+      console.error("Order placement error:", error);
+      toast.error("Failed to place order. Try again later.");
+    }
+  };
 
   return (
     <Sheet>
@@ -67,17 +121,23 @@ function CartBag() {
             <div>
               <div className="flex justify-between">
                 <p className="font-semibold">Total:</p>
-                <p className="font-semibold">$100</p>
+                <p className="font-semibold">
+                  ৳{calculateTotalPrice().toFixed(2)}
+                </p>
               </div>
 
               <div className="flex justify-between">
                 <p>Total Discount:</p>
-                <p className="line-through">$100</p>
+                <p className="line-through">
+                  ৳{calculateTotalDiscount().toFixed(2)}
+                </p>
               </div>
             </div>
 
             <SheetClose asChild>
-              <Button className="w-full h-12">Checkout</Button>
+              <Button onClick={placeOrder} className="w-full h-12">
+                Checkout
+              </Button>
             </SheetClose>
           </div>
         </SheetFooter>
