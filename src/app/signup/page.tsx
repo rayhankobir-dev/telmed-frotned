@@ -32,9 +32,9 @@ function SignupPage() {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       try {
-        api.post("/users", values);
+        await api.post("/users", values);
         toast.success("Account created successfully!");
         window.location.href = "/login";
         formik.resetForm();

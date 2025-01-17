@@ -34,11 +34,12 @@ function UserAccount() {
       {user && (
         <DropdownMenuContent className="w-56 z-[100]">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <div className="flex flex-col gap-1 px-2">
+            <p className="font-light">{user.email}</p>
+            {user.role !== "USER" && <div>Role: {user.role}</div>}
+          </div>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem asChild>
-              <Link href="/profile">Profile</Link>
-            </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link href="/dashboard/profile">Dashboard</Link>
             </DropdownMenuItem>

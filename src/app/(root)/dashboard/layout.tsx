@@ -8,10 +8,14 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
 
   if (!isAuthenticated) {
     redirect("/login");
+  }
+
+  if (user?.role === "ADMIN") {
+    redirect("/admin");
   }
 
   return (

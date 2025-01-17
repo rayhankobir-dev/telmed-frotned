@@ -47,9 +47,13 @@ const AppointmentCard = ({ appointment }: any) => {
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <Button className="ml-4">
-            <Link href={`/meeting?callId=${appointment.meetingId}`}>Join</Link>
-          </Button>
+          {appointment.paymentStatus === "paid" && (
+            <Button className="ml-4">
+              <Link href={`/meeting?callId=${appointment.meetingId}`}>
+                Join
+              </Link>
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

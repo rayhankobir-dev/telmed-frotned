@@ -49,7 +49,7 @@ function DoctorList({ doctors = [] }) {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 p-1">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3 p-1">
         {doctors.map((doctor, index) => (
           <DoctorCard key={index} doctor={doctor} />
         ))}

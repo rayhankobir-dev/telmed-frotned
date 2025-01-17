@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import api from "@/api";
+import { User } from "@/types";
 import { useAuthStore } from "@/store/authStore";
 import Spinner from "@/components/common/spinner";
 import { createContext, useContext, useEffect, useState } from "react";
-import { User } from "@/types";
 
 interface AuthContextType {
   loading: boolean;
