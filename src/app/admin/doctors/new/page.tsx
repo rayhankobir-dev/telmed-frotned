@@ -65,8 +65,8 @@ const ProfessionalForm = () => {
 
   return (
     <div>
-      <div>
-        <h1>Add Doctor</h1>
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold">Add Doctor</h1>
         <p>Please fill the form below to add a doctor</p>
       </div>
       <form

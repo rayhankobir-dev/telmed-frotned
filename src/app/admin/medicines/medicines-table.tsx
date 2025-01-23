@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
   Eye,
   Edit,
@@ -100,7 +100,7 @@ export function MedicinesTable({ medicines = [] }: any) {
               </TableRow>
             )}
             {currentMedicines.map((medicine: any) => (
-              <TableRow key={medicine.id}>
+              <TableRow key={medicine._id}>
                 <TableCell>
                   <img
                     src={medicine.image || "/placeholder.svg"}

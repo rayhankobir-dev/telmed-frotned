@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Edit, Trash2, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import {
   Table,
@@ -88,7 +88,7 @@ export function DoctorsTable({ doctors }: any) {
               </TableRow>
             )}
             {currentDoctors.map((doctor: any) => (
-              <TableRow key={doctor.id}>
+              <TableRow key={doctor._id}>
                 <TableCell>
                   <img
                     src={doctor.image || "/placeholder.svg"}

@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Trash2, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Table,
@@ -89,7 +89,7 @@ export function CustomersTable({ customers }: any) {
               </TableRow>
             )}
             {currentUsers.map((user: any) => (
-              <TableRow key={user.id}>
+              <TableRow key={user._id}>
                 <TableCell>
                   <img
                     src={user.image || "/placeholder.svg"}
