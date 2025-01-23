@@ -33,7 +33,7 @@ function DoctorList({ doctors = [] }) {
 
       {doctors.length === 0 && (
         <div className="flex flex-col justify-center items-center py-12 border border-dashed rounded-lg">
-          <Image
+          <img
             className="max-w-[200px]"
             src="/images/empty-state.png"
             alt="Empty State"

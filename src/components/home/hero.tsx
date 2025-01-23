@@ -32,7 +32,7 @@ export default function Hero() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="">
             <div className="rounded-xl overflow-hidden bg-primary/10">
-              <Image
+              <img
                 className="min-h-[130px] w-full object-cover object-bottom"
                 src={slide}
                 alt="Banner"

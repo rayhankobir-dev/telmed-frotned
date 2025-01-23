@@ -90,7 +90,7 @@ export function DoctorsTable({ doctors }: any) {
             {currentDoctors.map((doctor: any) => (
               <TableRow key={doctor.id}>
                 <TableCell>
-                  <Image
+                  <img
                     src={doctor.image || "/placeholder.svg"}
                     alt={`${doctor.fullName}'s profile`}
                     width={50}

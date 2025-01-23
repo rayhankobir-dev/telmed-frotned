@@ -99,7 +99,7 @@ function CartBag() {
         {cart.length === 0 && (
           <div className="flex-1 p-4">
             <div className="flex flex-col items-center">
-              <Image
+              <img
                 className="max-w-[290px] mx-auto"
                 src="/images/empty-state.png"
                 alt="Empty Cart"

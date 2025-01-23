@@ -30,7 +30,7 @@ function CartItem({ item }: any) {
   return (
     <div className="flex items-center gap-3 group">
       <div className="relative w-16 h-16 flex items-center justify-center rounded-sm overflow-hidden bg-primary/10 border border-primary/10 group-hover:border-red-100">
-        <Image
+        <img
           className="w-16 h-16 aspect-square object-cover object-center"
           src={item.medicine.image}
           alt={item.medicine.name}

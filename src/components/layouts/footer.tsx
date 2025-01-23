@@ -66,7 +66,7 @@ const Footer = () => {
             <p className="order-2 lg:order-1 font-light text-sm text-muted-foreground text-center lg:text-left">
               Copyright © 2023 - All right reserved
             </p>
-            <Image
+            <img
               className="w-full max-w-xl order-1 mx-auto md:mx-0"
               src={"https://www.ghureashi.xyz/assets/payment-logo-DqygCPo1.png"}
               alt="Payment Logo"

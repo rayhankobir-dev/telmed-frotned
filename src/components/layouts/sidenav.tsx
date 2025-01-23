@@ -25,7 +25,7 @@ function SideNav() {
             href={link.to}
             className="flex items-center gap-3 py-2.5 px-3 text-md bg-primary/5 hover:bg-primary/10 border-b border-primary/20 font-medium text-lg"
           >
-            <Image
+            <img
               className="h-10 w-10 rounded-full"
               src={link.icon}
               alt={link.label}
@@ -38,7 +38,7 @@ function SideNav() {
       </div>
 
       <div className="flex flex-col items-center justify-center gap-2 bg-primary-foreground p-5">
-        <Image
+        <img
           className="max-w-[150px] mx-auto"
           src="/vectors/doctor.svg"
           alt="Vector"

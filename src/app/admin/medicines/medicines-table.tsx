@@ -102,7 +102,7 @@ export function MedicinesTable({ medicines = [] }: any) {
             {currentMedicines.map((medicine: any) => (
               <TableRow key={medicine.id}>
                 <TableCell>
-                  <Image
+                  <img
                     src={medicine.image || "/placeholder.svg"}
                     alt={medicine.name}
                     width={50}

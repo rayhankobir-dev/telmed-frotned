@@ -14,7 +14,7 @@ export default function PaymentSuccess() {
     <section className="max-w-7xl flex items-center justify-center px-6 lg:px-0 py-12 mx-auto">
       <Card className="max-w-xl w-full px-3 text-2xl font-semibold border-dashed lg:border-none shadow-none">
         <CardHeader>
-          <Image
+          <img
             src="/images/images.png"
             className="max-w-sm mx-auto"
             alt=""

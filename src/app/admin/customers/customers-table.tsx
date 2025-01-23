@@ -91,7 +91,7 @@ export function CustomersTable({ customers }: any) {
             {currentUsers.map((user: any) => (
               <TableRow key={user.id}>
                 <TableCell>
-                  <Image
+                  <img
                     src={user.image || "/placeholder.svg"}
                     alt={user.fullName}
                     width={50}

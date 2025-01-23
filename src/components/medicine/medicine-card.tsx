@@ -23,7 +23,7 @@ function MedicineCard({ medicine }: { medicine: Medicine }) {
         href={`/medicines/${medicine._id}`}
         className="max-h-[180px] overflow-hidden"
       >
-        <Image
+        <img
           className="w-full max-w-[200px] mx-auto aspect-square object-cover object-center scale-110 hover:scale-125 transition-all duration-300"
           src={medicine.image}
           alt={medicine.name}

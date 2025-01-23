@@ -31,7 +31,7 @@ export default function HowToOderder() {
       <div className="flex justify-end items-center">
         <div className="relative max-w-sm rounded-2xl overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-gray-700/60"></div>
-          <Image
+          <img
             className="w-full h-full object-cover object-top"
             src="/images/demo.png"
             alt="Medify"

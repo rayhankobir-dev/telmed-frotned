@@ -33,7 +33,7 @@ const DoctorCard: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
   return (
     <div className="bg-white rounded-lg p-6 w-full max-w-sm border border-primary/20 hover:border-primary/50 shadow hover:shadow-lg duration-300">
       <div className="max-h-[200px] w-full overflow-hidden">
-        <Image
+        <img
           className="h-full w-full object-cover object-center"
           src={doctor.image || "/images/demo-doctor.png"}
           width={300}

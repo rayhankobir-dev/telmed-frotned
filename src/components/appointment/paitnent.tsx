@@ -17,7 +17,7 @@ const AppointmentCard = ({ appointment }: any) => {
   return (
     <Card className="mb-4">
       <CardContent className="flex items-start p-4">
-        <Image
+        <img
           src={doctor.image || "/images/demo-doctor.png"}
           alt={doctor.fullName}
           width={80}
