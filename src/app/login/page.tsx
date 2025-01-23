@@ -65,7 +65,7 @@ function LoginPage() {
         <div className="mb-6 text-center">
           <div className="flex items-center justify-center gap-4 mb-2">
             <AppLogoIcon />
-            <h1 className="font-bold text-3xl text-primary">MedInfo</h1>
+            <h1 className="font-bold text-3xl text-primary">Medify</h1>
           </div>
           <h1 className="font-bold text-2xl">Login to Your Account</h1>
           <p className="text-gray-600">

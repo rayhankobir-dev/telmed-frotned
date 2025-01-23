@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="col-span-2 mb-8 lg:mb-0">
               <Link href="/" className="flex items-center gap-2">
                 <AppLogoIcon />
-                <span className="font-bold text-2xl text-primary">MedInfo</span>
+                <span className="font-bold text-2xl text-primary">Medify</span>
               </Link>
             </div>
             {sections.map((section, sectionIdx) => (

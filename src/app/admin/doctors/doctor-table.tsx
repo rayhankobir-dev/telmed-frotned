@@ -102,7 +102,7 @@ export function DoctorsTable({ doctors }: any) {
                 <TableCell className="font-medium">{doctor.fullName}</TableCell>
                 <TableCell>{doctor.email}</TableCell>
                 <TableCell>{doctor.phone}</TableCell>
-                <TableCell>${doctor.charge}</TableCell>
+                <TableCell>৳{doctor.charge}</TableCell>
                 <TableCell>{doctor.dateOfBirth}</TableCell>
                 <TableCell>{doctor.degrees}</TableCell>
                 <TableCell>{doctor.education}</TableCell>

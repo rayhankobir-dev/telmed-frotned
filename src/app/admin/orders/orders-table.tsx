@@ -103,8 +103,8 @@ export function OrdersTable({ orders }: any) {
                     </Button>
                   </TableCell>
                   <TableCell>{order.transactionId}</TableCell>
-                  <TableCell>${order.totalPrice.toFixed(2)}</TableCell>
-                  <TableCell>${order.totalDiscount.toFixed(2)}</TableCell>
+                  <TableCell>৳{order.totalPrice.toFixed(2)}</TableCell>
+                  <TableCell>৳{order.totalDiscount.toFixed(2)}</TableCell>
                   <TableCell>
                     <Badge className={cn("capitalize")}>{order.status}</Badge>
                   </TableCell>
@@ -150,7 +150,7 @@ export function OrdersTable({ orders }: any) {
                                 <TableCell>{medicine.company || "-"}</TableCell>
                                 <TableCell>{quantity || "-"}</TableCell>
                                 <TableCell>
-                                  ${medicine.price.toFixed(2)}
+                                  ৳{medicine.price.toFixed(2)}
                                 </TableCell>
                               </TableRow>
                             )

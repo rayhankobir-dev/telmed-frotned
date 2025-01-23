@@ -51,6 +51,8 @@ const DoctorCard: React.FC<{ doctor: Doctor }> = ({ doctor }) => {
         </span>
       </div>
 
+      <h2 className="font-semibold text-lg">৳{doctor.charge}</h2>
+
       {user?.role === "USER" && (
         <button
           className="mt-4 w-full py-2 bg-primary text-white font-medium rounded-md transition"

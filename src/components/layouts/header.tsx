@@ -23,7 +23,7 @@ function Header() {
           <Link href="/" className="flex items-center gap-2">
             <AppLogoIcon />
             <span className="hidden md:block lg:hidden xl:block font-bold text-2xl text-primary">
-              MedInfo
+              Medify
             </span>
           </Link>
 

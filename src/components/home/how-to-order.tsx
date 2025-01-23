@@ -34,7 +34,7 @@ export default function HowToOderder() {
           <Image
             className="w-full h-full object-cover object-top"
             src="/images/demo.png"
-            alt="Medinfo"
+            alt="Medify"
             width={1920}
             height={1080}
           />

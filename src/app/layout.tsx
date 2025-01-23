@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Medinfo - Healthcare & Medicine Service",
-  description: "Medinfo is a healthcare & medicine service",
+  title: "Medify - Healthcare & Medicine Service",
+  description: "Medify is a healthcare & medicine service",
 };
 
 import { Toaster } from "react-hot-toast";

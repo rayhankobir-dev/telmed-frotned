@@ -115,7 +115,7 @@ export function MedicinesTable({ medicines = [] }: any) {
                 <TableCell>{medicine.dosageForm}</TableCell>
                 <TableCell>{medicine.generic}</TableCell>
                 <TableCell>{medicine.company}</TableCell>
-                <TableCell>${medicine.price.toFixed(2)}</TableCell>
+                <TableCell>৳{medicine.price.toFixed(2)}</TableCell>
                 <TableCell>{medicine.discountPercentage}%</TableCell>
                 <TableCell>{medicine.unit}</TableCell>
                 <TableCell className="text-right">

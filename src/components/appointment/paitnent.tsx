@@ -31,7 +31,7 @@ const AppointmentCard = ({ appointment }: any) => {
             {doctor.experienceInYears} years of experience
           </p>
           <p className="text-sm text-gray-600">{doctor.email}</p>
-          <h1 className="pt-2 font-semibold">$100</h1>
+          <h1 className="pt-2 font-semibold">৳{doctor.charge}</h1>
 
           <div className="flex flex-wrap items-center mt-2 gap-y-2">
             <Calendar className="w-4 h-4 mr-1" />
